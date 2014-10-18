@@ -1,0 +1,19 @@
+{
+  "name": "mongeese",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^0.9.0",
+    "lodash": "^2.4.1",
+    "mongoose": "^3.8.17"
+  },
+  "devDependencies": {
+    "mocha": "^1.21.5"
+  }
+}
