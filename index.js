@@ -57,13 +57,29 @@ var middleArguments = function(a) {
     })
    */
 
-  mongoose.Types.Array.prototype.invoke = function() {
-    var callback = _.last(arguments)
-    var method = _.first(arguments)
-    var args = middleArguments(arguments);
+  mongoose.Types.Array.prototype.__invoke = function() {
+    var mapType = _.first(arguments)
+    var realArgs = _.rest(arguments)
+    var callback = _.last(realArgs)
+    var method = _.first(realArgs)
+    var args = middleArguments(realArgs);
     var iterator = function(doc,done) {
       args.push(done);
       doc[method].apply(doc,args)
     }
-    arr.map(iterator,callback)
+    this[mapType](iterator,callback)
   }
+
+  mongoose.Types.Array.prototype._invoke = function() {
+    var fn = this.__invoke.bind(this,'_map');
+    fn(arguments);
+  }
+
+  mongoose.Types.Array.prototype.invoke = function() {
+    var fn = this.__invoke.bind(this,'map');
+    fn(arguments);
+  }
+
+
+
+

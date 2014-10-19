@@ -52,3 +52,40 @@ describe('Array#[async methods]', function() {
   })
 
 })
+
+describe('Array#invoke',function() {
+
+  describe('#_invoke',function() {
+    it('should call #_map', function() {
+      var mock = sinon.mock(doc.refArray)
+      mock.expects('_map').once()
+      doc.refArray._invoke()
+    })
+  })
+
+  describe('#invoke', function() {
+    it('should call #map',function() {
+      var mock = sinon.mock(doc.refArray)
+      mock.expects('map').once()
+      doc.refArray.invoke()
+      doc.refArray.map.restore()
+    })
+  })
+
+  describe('#__invoke',function() {
+    it('should call param one',function() {
+      var mock = sinon.mock(doc.refArray)
+      mock.expects('map').once()
+      doc.refArray.__invoke('map')
+    })
+  });
+})
+
+
+
+
+
+
+
+
+
