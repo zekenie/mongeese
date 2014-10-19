@@ -1,13 +1,21 @@
 {
   "name": "mongeese",
-  "version": "0.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "Supercharged mongoose Array class",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
   },
-  "author": "",
+  "author": {
+    "name" : "Zeke Nierenberg"
+  , "email" : "hampzan09@gmail.com"
+  , "url" : "http://zeke.io"
+  },
   "license": "ISC",
+  "repository" : {
+    "type" : "git"
+  , "url" : "http://github.com/zekenie/mongeese.git"
+  },
   "dependencies": {
     "async": "^0.9.0",
     "lodash": "^2.4.1",
