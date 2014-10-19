@@ -6,6 +6,14 @@
 
 This library supercharges the [mongoose Array class](http://mongoosejs.com/docs/api.html#types-array-js) by adding some [async functional methods](https://github.com/caolan/async), and some extra goodies.
 
+## Installation
+
+```bash
+$ npm install mongeese --save
+```
+
+Before you define your models, `require` mongeese. It will modify the prototypes of several mongoose classes, so you can't require it after you make your models.
+
 ## Async methods
 
 Imagine you had a user class with an array of objectId references to kittens. With mongeese, you can do this
@@ -42,3 +50,11 @@ someUser.kittens.invoke('meow',arg1,arg2,callback)
 ```
 
 After ensuring that the kittens array has been populated, Mongeese will asynchronously call the meow method on each kitten. `invoke` is really a front for async map, so it is assumed that the function you invoke will act sort of like an iterator.
+
+## Development & Contribution
+
+If you see anything wrong or want a feature, pull requests are welcome. To run the test suite
+
+```bash
+$ npm test
+```
