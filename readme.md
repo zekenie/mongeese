@@ -9,7 +9,7 @@ This library supercharges the [mongoose Array class](http://mongoosejs.com/docs/
 ## Installation
 
 ```bash
-$ npm install mongeese --save
+$ npm install mongeese-array --save
 ```
 
 Before you define your models, `require` mongeese. It will modify the prototypes of several mongoose classes, so you can't require it after you make your models.

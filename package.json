@@ -1,5 +1,5 @@
 {
-  "name": "mongeese",
+  "name": "mongeese-array",
   "version": "0.0.1",
   "description": "Supercharged mongoose Array class",
   "main": "index.js",
