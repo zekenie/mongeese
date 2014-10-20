@@ -5,6 +5,10 @@ var middleArguments = function(a) {
   return _.initial(_.rest(a))
 }
 
+var capitalize = function(s) {
+  return s[0].toUpperCase() + s.slice(1);
+}
+
 mongoose.Document.prototype.ensurePopulated = function(path,cb) {
   var self = this;
   if(this.populated(path)) {
@@ -34,15 +38,21 @@ var copyFromAsync = ['each',
 
 
 copyFromAsync.forEach(function(method) {
-  mongoose.Types.Array.prototype['_'+method] = function() {
-    var args = [this].concat(arguments)
+
+  var capitalMethod = capitalize(method)
+
+  mongoose.Types.Array.prototype['_async'+ capitalMethod] = function() {
+    var args = [this]
+    for(var i = 0; i < arguments.length; i++) {
+      args.push(arguments[i])
+    }
     async[method].apply(async,args)
   }
 
-  mongoose.Types.Array.prototype[method] = function() {
+  mongoose.Types.Array.prototype['async' + capitalMethod] = function() {
     var a = arguments
     this.ensurePopulated(function(err,self) {
-      self['_'+method].apply(self,a)
+      self['_async'+ capitalMethod].apply(self,a)
     })
   }
 })
@@ -55,18 +65,22 @@ mongoose.Types.Array.prototype.__invoke = function() {
   var method = _.first(realArgs)
   var args = middleArguments(realArgs);
   var iterator = function(doc,done) {
-    args.push(done);
-    doc[method].apply(doc,args)
+    args.unshift(doc);
+    var fn = doc[method].bind.apply(doc[method],args)
+    args.shift();
+    fn(function() {
+      done.apply(undefined,arguments)
+    })
   }
   this[mapType](iterator,callback)
 }
 
 mongoose.Types.Array.prototype._invoke = function() {
-  var fn = this.__invoke.bind(this,'_map');
+  var fn = this.__invoke.bind(this,'_asyncMap');
   fn(arguments);
 }
 
 mongoose.Types.Array.prototype.invoke = function() {
-  var fn = this.__invoke.bind(this,'map');
-  fn(arguments);
+  var fn = this.__invoke.bind(this,'asyncMap');
+  fn.apply(undefined,arguments);
 }

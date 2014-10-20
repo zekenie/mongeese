@@ -20,10 +20,10 @@ Imagine you had a user class with an array of objectId references to kittens. Wi
 
 ```javascript
 var iterator = function(oneKitten,done) {
-  callback(null,oneKitten.name)
+  done(null,oneKitten.name)
 }
 
-someUser.kittens.map(iterator,function(err,kittenNames) {
+someUser.kittens.asyncMap(iterator,function(err,kittenNames) {
   // kitten names -> ['fluffy', 'cuddles', ...]
 })
 ```
@@ -32,14 +32,14 @@ Mongeese will ensure that the path has been [populated](http://mongoosejs.com/do
 
 Functions available directly from the async library:
 
-- each
-- eachLimit
-- map
-- mapLimit
-- reduce
-- reduceRight
-- sortBy
-- concat
+- asyncEach
+- asyncEachLimit
+- asyncMap
+- asyncMapLimit
+- asyncReduce
+- asyncReduceRight
+- asyncSortBy
+- asyncConcat
 
 ## Invoke
 
@@ -49,7 +49,7 @@ I've added an additional method that async hasn't implemented: invoke. Let's say
 someUser.kittens.invoke('meow',arg1,arg2,callback)
 ```
 
-After ensuring that the kittens array has been populated, Mongeese will asynchronously call the meow method on each kitten. `invoke` is really a front for async map, so it is assumed that the function you invoke will act sort of like an iterator.
+After ensuring that the kittens array has been populated, Mongeese will asynchronously call the meow method on each kitten. `invoke` is really a front for async map, so it is assumes that the function you invoke will act sort of like an iterator.
 
 ## Development & Contribution
 

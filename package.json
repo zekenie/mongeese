@@ -1,6 +1,6 @@
 {
   "name": "mongeese-array",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Supercharged mongoose Array class",
   "main": "index.js",
   "scripts": {
