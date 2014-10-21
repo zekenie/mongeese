@@ -1,6 +1,6 @@
 {
   "name": "mongeese-array",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Supercharged mongoose Array class",
   "main": "index.js",
   "scripts": {
@@ -19,11 +19,11 @@
   "dependencies": {
     "async": "^0.9.0",
     "lodash": "^2.4.1",
-    "mongoose": "^3.8.17"
   },
   "devDependencies": {
     "expect.js": "^0.3.1",
     "mocha": "^1.21.5",
+    "mongoose": "^3.8.17",
     "sinon": "^1.10.3"
   }
 }
