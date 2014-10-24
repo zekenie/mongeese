@@ -2,7 +2,7 @@
 
 ![Dependencies](https://david-dm.org/zekenie/mongeese.png)
 
-(Thanks to [Fullstack Academy](http://fullstackacademy.com) for supporting this work!)
+Made by [Fullstack Academy](http://fullstackacademy.com)
 
 # Mongeese
 
