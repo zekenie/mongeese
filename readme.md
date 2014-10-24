@@ -2,6 +2,8 @@
 
 ![Dependencies](https://david-dm.org/zekenie/mongeese.png)
 
+(Thanks to [Fullstack Academy](http://fullstackacademy.com) for supporting this work!)
+
 # Mongeese
 
 This library supercharges the [mongoose Array class](http://mongoosejs.com/docs/api.html#types-array-js) by adding some [async functional methods](https://github.com/caolan/async), and some extra goodies.
